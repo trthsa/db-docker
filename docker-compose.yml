@@ -1,0 +1,41 @@
+version: '3.8'
+services:
+  dev-db1:
+    image: postgres:13
+    ports:
+      - 5434:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123
+      POSTGRES_DB: nest
+    volumes:
+      - myapp:/home/node/app
+    networks:
+      - freecodecamp
+  dev-db2:
+    image: postgres:13
+    ports:
+      - 54344:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123
+      POSTGRES_DB: nest
+    volumes:
+      - myapp:/home/node/app
+    networks:
+      - freecodecamp
+  test-db:
+    image: postgres:13
+    ports:
+      - 5435:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123
+      POSTGRES_DB: nest
+    networks:
+      - freecodecamp
+volumes:
+  myapp:
+    external: true
+networks:
+  freecodecamp:
